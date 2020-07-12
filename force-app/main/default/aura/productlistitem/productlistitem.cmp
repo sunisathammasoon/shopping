@@ -1,0 +1,31 @@
+<aura:component>
+    <aura:attribute name="product" type="Object"/>
+    <aura:registerEvent name="updateqty" type="c:keyupqty"/>
+
+    <lightning:card >
+        <lightning:layout >
+            <lightning:layoutItem padding="around-small">
+                    {!v.product.Name} 
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                {!v.product.Price__c}
+            </lightning:layoutItem>
+         
+            <lightning:layoutItem padding="around-small">
+                    <ui:inputText aura:id="qtyInput" keyup="{!c.handleKeyUp}" value="{!v.product.quantity}"  updateOn="keyup"/>
+
+                    <!-- <lightning:input name="input1"  label="number" variant = "label-hidden"  value="{!product.quantity}" onkeyup="{! c.handleKeyUp }"/> -->
+             
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small">
+                <!-- {!v.product.quantity*v.product.Price__c}  -->
+                
+                {!v.product.total}
+               
+            </lightning:layoutItem>
+        </lightning:layout>
+
+    </lightning:card>
+    
+
+</aura:component>	

@@ -1,0 +1,58 @@
+<aura:component controller = "shoppingcontroller" implements="force:appHostable">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="updateListitem" event="c:updatelistproduct"
+    action="{!c.handleUpdateList}"/>
+
+
+    <aura:handler name="updateqty" event="c:keyupqty"
+    action="{!c.handleKeyupqty}"/>
+    <aura:attribute name="products" type="Product__c[]"/>
+     <aura:attribute name="productList" type="Object[]" />
+    <!-- <aura:attribute name="Updateqty" type="Object"/>  -->
+    <aura:attribute name="Order" type="Order__c" default="{'sobjectType': 'Order__c',
+                                                            'User__c': '',
+                                                            'Product__c': '',
+                                                            'Quantity__c': ''
+                                                            }"/>
+    <aura:attribute name="Orderlist" type="Order__c[]"/>
+
+
+
+
+    <div class="c-container">
+        <lightning:layout multipleRows="true">
+            <lightning:layoutItem padding="around-small" size="12">
+                <div class="page-section page-header">
+                    <h2>S H O P P I N G</h2>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem padding="around-small" size="12">
+                <lightning:layout>
+                    
+                    <lightning:layoutItem padding="around-small" size="6">
+                        <div class="page-section page-main">
+                            <h2>Product</h2>
+                            <c:product  products="{!v.products}"></c:product>
+                        </div>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="around-small" size="6">
+                        <div class="page-section page-right">
+                            <h2> List of products you selected</h2>
+                            <c:productlist products="{!v.productList}"></c:productlist>
+                            
+                        </div>
+                        <lightning:layoutItem padding="around-small" size="6">                           
+                            <lightning:button label="Next"  iconName="utility:play" iconPosition="left"  variant="brand-outline" onclick="{!c.gotoURL}" />     
+                        </lightning:layoutItem>
+                    </lightning:layoutItem>
+                   
+                </lightning:layout>
+            </lightning:layoutItem>
+            <lightning:layoutItem flexibility="auto" padding="around-small" size="12">
+                <div class="page-footer page-section">
+                    <h2>Footer</h2>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
+</aura:component>	

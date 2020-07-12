@@ -1,0 +1,31 @@
+<aura:component access="global" >
+
+    <aura:attribute name="Customer" type="Object" access="global"/>
+    <aura:attribute name="productList" type="Product__c[]" access="global" />
+    <aura:attribute name="user" type="User__c" access="global"/>
+
+    
+
+    <lightning:card title="Checkout">
+        <p class="slds-p-horizontal_small">
+            ข้อมูล
+        </p>
+        <p class="slds-p-horizontal_small">
+             ชื่อ : {!v.Customer.Name}<br/>
+            เบอร์โทรศัพท์ : {!v.Customer.Phone__c} <br/>
+            อีเมลล์ : {!v.Customer.email__c}<br/>
+            ที่อยู่ : {!v.Customer.address__c} <br/>
+        </p>
+
+        <lightning:card title="รายการสินค้า">
+            <aura:iteration items="{!v.productList}" var="product">   
+                {!product.Name} &nbsp;  &nbsp;  จำนวน &nbsp;  &nbsp;   {!product.quantity} ชิ้น &nbsp;  &nbsp; ราคา {!product.total} บาท<br/>
+                
+            </aura:iteration>
+        </lightning:card>
+
+        <lightning:button label="View PDF"  iconName="utility:layers" iconPosition="left"  variant="brand-outline" onclick="{!c.viewPDF}" />     
+
+    </lightning:card>
+
+</aura:component>	

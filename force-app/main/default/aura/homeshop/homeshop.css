@@ -1,0 +1,10 @@
+.THIS h2 {
+    color: brown;
+    font-size: 20px;
+    font-family: 'Roboto';
+}
+.THIS .page-section {
+    border: solid 1px #ccc;
+    padding: 1rem;
+    background-color: cornsilk;
+}

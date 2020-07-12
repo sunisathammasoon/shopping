@@ -1,0 +1,14 @@
+<aura:component>
+    <aura:attribute name="product" type="Object"/>
+
+    <aura:registerEvent name="updateListitem" type="c:updatelistproduct"/>
+
+    <img src="{!$Resource.product+'/'+v.product.Name+'.jpg'}" width="150"/>
+    <lightning:badge label="Name"/> {!v.product.Name} 
+    <lightning:badge label="Price"/> {!v.product.Price__c} 
+    
+    &nbsp;&nbsp;
+    <lightning:button label="Select"  iconName="utility:add" iconPosition="left"  variant="brand-outline" onclick="{!c.clickSelect}" />
+    <br/><br/>
+
+</aura:component>	

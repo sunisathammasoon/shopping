@@ -1,0 +1,45 @@
+<apex:page controller ="pdfcontroller"  renderAs="PDF" applyBodyTag="false" standardStylesheets="false"
+showHeader="false" sidebar="false" cache="false" applyhtmltag="false">
+<head>
+    <style>
+    body {
+        font-family: "Arial Unicode MS";
+       }
+    
+       @page {
+        size: A4 Portrait;
+       }
+      </style>
+      
+     </head>
+       
+        
+<body>     
+<!-- Begin Default Content REMOVE THIS -->
+    <h3>Customer information</h3>
+    <!-- End Default Content REMOVE THIS -->
+   
+
+    Name :{!user.Name} <br/>
+    Phone :{!user.Phone__c}<br/>
+    E-mail :{!user.email__c}" <br/>
+    Address :{!user.address__c}<br/>
+
+
+    <!-- {!dataCustomer.Name} -->
+
+    <!-- {!fieldList.Name} -->
+    <h3>Product List</h3>
+    <apex:repeat value="{!Orders}" var="order" id="theRepeat">
+
+        Name :<apex:outputText value="{!order.Product__r.Name}"   style="font-weight: bold;"/>
+        Quantity :
+        <apex:outputText value="{!order.Quantity__c}"  style="font-weight: bold;"/> 
+        Price :
+        <apex:outputText value="{!order.Product__r.Price__c}" style="font-weight: bold;"/>
+        Total:
+        <apex:outputText value="{!order.Product__r.Price__c*order.Quantity__c}" style="font-weight: bold;"/><br/>
+
+    </apex:repeat>
+</body>  
+</apex:page>
